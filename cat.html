@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<title>랜덤고양이 사진</title>
+<meta charset="utf-8">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function q1() {
+      $.ajax({
+          type: "GET",
+          url: "https://api.thecatapi.com/v1/images/search",
+          data: {},
+          success: function(response){
+              console.log(response)
+              let cat_img = response[0]["url"]
+              $("#img-cat").attr("src", cat_img)
+
+          }
+
+      })
+    }
+  </script>
+</head>
+
+<body>
+   <h1>랜덤 고양이 사진을 띄워보자</h1>
+
+   <hr/>
+
+   <div class="question-box">
+     <h2>고양이 사진 API를 이용해보기</h2>
+     <p>고양이 사진 띄우기</p>
+     <p>업데이트 버튼을 누를 때마다 다른 사진이 띄워져야 합니다.</p>
+     <button onclick="q1()">고양이 사진 바꾸기</button>
+     <div>
+       <img id="img-cat" src="http://image.dongascience.com/Photo/2017/03/14900752352661.jpg"/>
+     </div>
+   </div>
+   <a href="index.html">돌아가기</a>
+ </body>
+
+</html>
